@@ -9,6 +9,7 @@ for (let data of paragraphs ){
   let summary = Summary.creatSummary(data);
   report.push(summary);
 }
+console.log(report);
 // extract  facts from form English text
 fs.writeFile("report.json", JSON.stringify(report), err => {
     // Checking for errors
