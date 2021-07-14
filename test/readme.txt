@@ -1,0 +1,1 @@
+run "yarn test" in the shell on the right and Jest will print test result

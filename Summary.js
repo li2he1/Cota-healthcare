@@ -1,23 +1,27 @@
 const sentimentIdentification = require("./SentimentIdentification");
 const TimeDuration = require("./TimeDuration");
 const FemaleIdentification = require("./FemaleIdentification");
+const splitParagraph = require("./splitParagraph");
 
-function creatSummary(paragraphs){
-  let report = [];
-  for (let data of paragraphs){
-    let paragraphArray = data.paragraph.split(/[ ,.]+/);
-    paragraphArray =  paragraphArray.map(word => word.toLowerCase());
+function creatSummary(data){
+    // data process the paragraph
+    let paragraphArray = splitParagraph(data);
+    
+    // get sentiment
     let sentiment = sentimentIdentification.identifySentiment(paragraphArray);
+
+    // get duration
     let timeDuration = TimeDuration.identifyDuration(paragraphArray);
+
+    // get FemaleIdentification
     let femaleIdentified = FemaleIdentification.identifyFemale(paragraphArray);
-    let Summary = {
+    
+    let summary = {
       "timeDuration": timeDuration, 
       "femaleIdentified": femaleIdentified,
       "sentiment": sentiment
     }
-    report.push(Summary);
-  }
-  return report;
+    return summary;
 }
 
 

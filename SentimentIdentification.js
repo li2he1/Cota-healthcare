@@ -3,12 +3,12 @@ const positiveSentiments = constants.keyWords.positiveSentiments;
 const negativeSentiments = constants.keyWords.negativeSentiments;
 
 function identifySentiment(paragraphArray){
-  // console.log(positiveSentiments);
+  // count keyWords
   let countPositive = 0;
   let countNegative = 0;
+
   for( let word of paragraphArray){
     if(positiveSentiments.includes(word)){
-      // console.log(word);
       countPositive++;
     }else if(negativeSentiments.includes(word) ){
       countNegative++;

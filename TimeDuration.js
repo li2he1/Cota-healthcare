@@ -1,13 +1,16 @@
 function identifyDuration(paragraphArray){
   let startDate = null ;
-  let endDate = null ; ;
+  let endDate = null ; 
+
+  // use regex to find the data string
   var date_regex = /^\d{2}\/\d{2}\/\d{4}$/ ;
-  // console.log(paragraphArray);
+
   for (let word of paragraphArray){
     if(word.match(date_regex)){
       if(!startDate ){
         startDate = new Date(word);
       }else {
+        // last endDate
         endDate = new Date(word);
       }
     }
