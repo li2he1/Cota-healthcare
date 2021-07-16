@@ -1,4 +1,4 @@
-const keyWords = {
+const KEYWORDS = {
   positiveSentiments : ["happy", 
     "glad", 
     "jubilant",
@@ -15,4 +15,4 @@ const keyWords = {
 }
 
 
-module.exports = { keyWords};
+module.exports = KEYWORDS;

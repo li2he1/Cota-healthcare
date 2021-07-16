@@ -1,5 +1,5 @@
-const constants = require("./constants");
-const femalePronouns = constants.keyWords.femalePronouns;
+const KEYWORDS = require("./constants");
+const femalePronouns = KEYWORDS.femalePronouns;
 
 function identifyFemale(paragraphArray){
   for( let word of paragraphArray){
@@ -10,4 +10,4 @@ function identifyFemale(paragraphArray){
   return "other";
 }
 
-module.exports = { identifyFemale};
+module.exports = identifyFemale;

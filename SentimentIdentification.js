@@ -1,6 +1,6 @@
-const constants = require("./constants");
-const positiveSentiments = constants.keyWords.positiveSentiments;
-const negativeSentiments = constants.keyWords.negativeSentiments;
+const KEYWORDS = require("./constants");
+const positiveSentiments = KEYWORDS.positiveSentiments;
+const negativeSentiments = KEYWORDS.negativeSentiments;
 
 function identifySentiment(paragraphArray){
   // count keyWords
@@ -28,4 +28,4 @@ function identifySentiment(paragraphArray){
 }
 
 
-module.exports = { identifySentiment};
+module.exports = identifySentiment;

@@ -7,11 +7,16 @@ function identifyDuration(paragraphArray){
 
   for (let word of paragraphArray){
     if(word.match(date_regex)){
-      if(!startDate ){
-        startDate = new Date(word);
-      }else {
-        // last endDate
-        endDate = new Date(word);
+      let date = new Date(word);
+      if(!startDate){
+        startDate = date;
+      }else if(startDate > date){
+        startDate = date;
+      }
+      if(!endDate){
+        endDate = date;
+      }else if( endDate < date) {
+        endDate = date;
       }
     }
   }
@@ -23,7 +28,7 @@ function identifyDuration(paragraphArray){
     var DifferenceInDays = DifferenceInTime / (1000 * 3600 * 24); 
     return DifferenceInDays+1;
   }
-  return null;
+  return 0;
 }
 
-module.exports = { identifyDuration};
+module.exports = identifyDuration;

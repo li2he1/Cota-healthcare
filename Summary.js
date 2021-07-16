@@ -1,6 +1,6 @@
-const sentimentIdentification = require("./SentimentIdentification");
-const TimeDuration = require("./TimeDuration");
-const FemaleIdentification = require("./FemaleIdentification");
+const identifySentiment = require("./SentimentIdentification");
+const identifyDuration = require("./TimeDuration");
+const identifyFemale = require("./FemaleIdentification");
 const splitParagraph = require("./splitParagraph");
 
 function creatSummary(data){
@@ -8,13 +8,13 @@ function creatSummary(data){
     let paragraphArray = splitParagraph(data);
     
     // get sentiment
-    let sentiment = sentimentIdentification.identifySentiment(paragraphArray);
+    let sentiment = identifySentiment(paragraphArray);
 
     // get duration
-    let timeDuration = TimeDuration.identifyDuration(paragraphArray);
+    let timeDuration = identifyDuration(paragraphArray);
 
     // get FemaleIdentification
-    let femaleIdentified = FemaleIdentification.identifyFemale(paragraphArray);
+    let femaleIdentified = identifyFemale(paragraphArray);
     
     let summary = {
       "timeDuration": timeDuration, 
