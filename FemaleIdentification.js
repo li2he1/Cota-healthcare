@@ -1,13 +1,11 @@
 const KEYWORDS = require("./constants");
 const femalePronouns = KEYWORDS.femalePronouns;
 
-function identifyFemale(paragraphArray){
-  for( let word of paragraphArray){
-    if(femalePronouns.includes(word)){
-      return "female";
-    }
+function identifyFemale(word){
+  if(femalePronouns.includes(word)){
+    return true;
   }
-  return "other";
+  return false;
 }
 
 module.exports = identifyFemale;

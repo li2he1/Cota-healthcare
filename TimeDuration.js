@@ -1,28 +1,27 @@
-function identifyDuration(paragraphArray){
-  let startDate = null ;
-  let endDate = null ; 
+// use regex to find the data string
+const date_regex = /^\d{2}\/\d{2}\/\d{4}$/ ;
 
-  // use regex to find the data string
-  var date_regex = /^\d{2}\/\d{2}\/\d{4}$/ ;
-
-  for (let word of paragraphArray){
+function getDate(word, startDate, endDate ){
     if(word.match(date_regex)){
       let date = new Date(word);
-      if(!startDate){
-        startDate = date;
-      }else if(startDate > date){
-        startDate = date;
+      if(!startDate[0]){
+        startDate[0] = date;
+      }else if(startDate[0] > date){
+        startDate[0] = date;
       }
-      if(!endDate){
-        endDate = date;
-      }else if( endDate < date) {
-        endDate = date;
+      if(!endDate[0]){
+        endDate[0] = date;
+      }else if( endDate[0] < date) {
+        endDate[0] = date;
       }
     }
-  }
-  if(startDate && endDate){
+}
+
+function getDuration(startDate, endDate){
+  
+  if(startDate[0] && endDate[0]){
     // To calculate the time difference of two dates
-    var DifferenceInTime = endDate.getTime() - startDate.getTime();
+    var DifferenceInTime = endDate[0].getTime() - startDate[0].getTime();
     
     // To calculate the no. of days between two dates
     var DifferenceInDays = DifferenceInTime / (1000 * 3600 * 24); 
@@ -31,4 +30,4 @@ function identifyDuration(paragraphArray){
   return 0;
 }
 
-module.exports = identifyDuration;
+module.exports = {getDate, getDuration};

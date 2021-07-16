@@ -3,10 +3,10 @@
 //read json
 const paragraphs = require("./paragraph");
 const fs = require("fs");
-const Summary = require("./Summary");
+const creatSummary = require("./Summary");
 let report = [];
 for (let data of paragraphs ){
-  let summary = Summary.creatSummary(data);
+  let summary = creatSummary(data);
   report.push(summary);
 }
 console.log(report);

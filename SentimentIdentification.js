@@ -2,30 +2,30 @@ const KEYWORDS = require("./constants");
 const positiveSentiments = KEYWORDS.positiveSentiments;
 const negativeSentiments = KEYWORDS.negativeSentiments;
 
-function identifySentiment(paragraphArray){
+function countSentiment(word, countPositive, countNegative){
   // count keyWords
-  let countPositive = 0;
-  let countNegative = 0;
-
-  for( let word of paragraphArray){
-    if(positiveSentiments.includes(word)){
-      countPositive++;
-    }else if(negativeSentiments.includes(word) ){
-      countNegative++;
-    }
+  if(positiveSentiments.includes(word)){
+    countPositive[0]++;
+  }else if(negativeSentiments.includes(word) ){
+    countNegative[0]++;
   }
-  if(countPositive === 0 && countNegative === 0){
+}
+
+function identifySentiment(countPositive, countNegative){
+  if(countPositive[0] === 0 && countNegative[0] === 0){
     return "unknown";
   }
-  if(countPositive === countNegative){
+  // assume equal count as a mixed
+  if(countPositive[0] === countNegative[0]){
     return "mixed";
   }
-  if(countPositive > countNegative){
+  if(countPositive[0] > countNegative[0]){
     return "positive";
   } else {
     return "negative";
   }
+  
 }
 
 
-module.exports = identifySentiment;
+module.exports = {identifySentiment,countSentiment} ;
