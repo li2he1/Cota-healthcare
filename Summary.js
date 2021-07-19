@@ -15,7 +15,7 @@ function creatSummary(data){
     let isFemale = false;
 
     for( let word of paragraphArray){
-      // get sentiment
+      // count sentiment
       countSentiment(word, countPositive, countNegative );
       // get date
       getDate(word, startDate, endDate);
@@ -25,7 +25,7 @@ function creatSummary(data){
         isFemale = identifyFemale(word);
       }
     }
-    // console.log(countPositive);
+
     let sentiment = identifySentiment(countPositive, countNegative);
     let timeDuration = getDuration(startDate, endDate);
 

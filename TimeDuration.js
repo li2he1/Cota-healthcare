@@ -2,10 +2,11 @@
 const date_regex = /^\d{2}\/\d{2}\/\d{4}$/ ;
 
 function getDate(word, startDate, endDate ){
-    if(word.match(date_regex)){
-      let date = new Date(word);
+  if(word.match(date_regex)){
+    let date = new Date(word);
+    if(!isNaN(date.getTime())){
       if(!startDate[0]){
-        startDate[0] = date;
+       startDate[0] = date;
       }else if(startDate[0] > date){
         startDate[0] = date;
       }
@@ -14,7 +15,10 @@ function getDate(word, startDate, endDate ){
       }else if( endDate[0] < date) {
         endDate[0] = date;
       }
-    }
+      // console.log(startDate[0]);
+      // console.log(endDate[0]);
+    } 
+  }
 }
 
 function getDuration(startDate, endDate){
